@@ -1,89 +1,105 @@
-window.ladi_viewport = function (b) {
-    var a = document;
-    b = b ? b : 'innerWidth';
-    var c = window[b];
-    var d = true;
-    if (typeof window.ladi_is_desktop == "undefined" || window.ladi_is_desktop == undefined) {
-        window.ladi_is_desktop = !d;
-    }
-    var e = 960;
-    var f = 420;
-    var g = '';
-    if (!d) {
-        g = "width=" + e + ",user-scalable=no,initial-scale=1.0";
+// Slider
+
+let currentIndex = 0;
+let intervalId;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-item');
+    if (index >= slides.length) {
+        currentIndex = 0;
+    } else if (index < 0) {
+        currentIndex = slides.length - 1;
     } else {
-        var h = 1;
-        var i = f;
-        if (i != c) {
-            h = c / i;
-        }
-        g = "width=" + i + ",user-scalable=no,initial-scale=" + h + ",minimum-scale=" + h + ",maximum-scale=" + h;
+        currentIndex = index;
     }
-    var j = a.getElementById("viewport");
-    if (!j) {
-        j = a.createElement("meta");
-        j.id = "viewport";
-        j.name = "viewport";
-        a.head.appendChild(j);
+    const offset = -currentIndex * 100;
+    document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+}
+
+function nextSlide() {
+    showSlide(currentIndex + 1);
+}
+
+function prevSlide() {
+    showSlide(currentIndex - 1);
+}
+
+function startAutoplay() {
+    intervalId = setInterval(nextSlide, 3000); // Change 3000 to the desired interval in milliseconds
+}
+
+function stopAutoplay() {
+    clearInterval(intervalId);
+}
+
+// Start autoplay when the page loads
+document.addEventListener('DOMContentLoaded', startAutoplay);
+
+// Stop autoplay when user interacts with the controls
+document.querySelector('.carousel-control.prev').addEventListener('click', function() {
+    stopAutoplay();
+    prevSlide();
+    startAutoplay(); // Restart autoplay after interaction
+});
+
+document.querySelector('.carousel-control.next').addEventListener('click', function() {
+    stopAutoplay();
+    nextSlide();
+    startAutoplay(); // Restart autoplay after interaction
+});
+
+
+// Countdown timer
+
+function startCountdown() {
+    const countdownElement = document.getElementById('countdown');
+
+    function getCurrentTime() {
+        return new Date();
     }
-    j.setAttribute("content", g);
-};
-window.ladi_viewport();
-window.ladi_fbq_data = [];
-window.ladi_fbq = function () {
-    window.ladi_fbq_data.push(arguments);
-};
-window.ladi_ttq_data = [];
-window.ladi_ttq = function () {
-    window.ladi_ttq_data.push(arguments);
-};
 
-//
+    function calculateInitialTime() {
+        const now = getCurrentTime();
+        const minutes = now.getMinutes();
+        const hours = now.getHours();
 
-!function (f, b, e, v, n, t, s) {
-    if (f.fbq) return;
-    n = f.fbq = function () {
-        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-    };
-    if (!f._fbq) f._fbq = n;
-    n.push = n;
-    n.loaded = !0;
-    n.version = '2.0';
-    n.queue = [];
-    t = b.createElement(e);
-    t.async = !0;
-    t.src = v;
-    s = b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t, s)
-}(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-fbq("init", "555808629829151");
-fbq("track", "PageView");
-fbq("track", "ViewContent");
+        let countdownMinutes;
 
-//
-
-!function (w, d, t) {
-    w.TiktokAnalyticsObject = t;
-    var ttq = w[t] = w[t] || [];
-    ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie"], ttq.setAndDefer = function (t, e) {
-        t[e] = function () {
-            t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+        if (hours % 2 === 0) {
+            countdownMinutes = 90 - minutes;
+        } else {
+            countdownMinutes = 90 - 60 - minutes;
         }
-    };
-    for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
-    ttq.instance = function (t) {
-        for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
-        return e
-    }, ttq.load = function (e, n) {
-        var i = "https://analytics.tiktok.com/i18n/pixel/events.js";
-        ttq._i = ttq._i || {}, ttq._i[e] = [], ttq._i[e]._u = i, ttq._t = ttq._t || {}, ttq._t[e] = +new Date, ttq._o = ttq._o || {}, ttq._o[e] = n || {};
-        n = document.createElement("script");
-        n.type = "text/javascript", n.async = !0, n.src = i + "?sdkid=" + e + "&lib=" + t;
-        e = document.getElementsByTagName("script")[0];
-        e.parentNode.insertBefore(n, e)
-    };
-    ttq.load("CLPBLFRC77U6SG2AKJL0");
-    window.ladi_ttq("track", "ViewContent");
-    window.ladi_ttq("track", "PageView");
-    ttq.page();
-}(window, document, "ttq");
+
+        return countdownMinutes * 60; // Convert to seconds
+    }
+
+    function formatTime(seconds) {
+        const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
+        const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+        const s = (seconds % 60).toString().padStart(2, '0');
+        return `${h}:${m}:${s}`;
+    }
+
+    let remainingSeconds = calculateInitialTime();
+
+    function updateCountdown() {
+        if (remainingSeconds <= 0) {
+            countdownElement.innerHTML = "00:00:00";
+
+            const now = getCurrentTime();
+            const nextEvenHour = (Math.ceil(now.getHours() / 2) * 2) % 24;
+            const millisecondsUntilNextEvenHour = new Date(now.getFullYear(), now.getMonth(), now.getDate(), nextEvenHour, 0, 0) - now;
+
+            setTimeout(startCountdown, millisecondsUntilNextEvenHour);
+        } else {
+            countdownElement.innerHTML = formatTime(remainingSeconds);
+            remainingSeconds--;
+            setTimeout(updateCountdown, 1000);
+        }
+    }
+
+    updateCountdown();
+}
+
+startCountdown();

@@ -1,6 +1,6 @@
-document.getElementById('sheetForm').onsubmit = function(e) {
+document.getElementById('orderForm').onsubmit = function(e) {
     e.preventDefault();
-    var formData = new FormData(document.getElementById('sheetForm'));
+    var formData = new FormData(document.getElementById('orderForm'));
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://script.google.com/macros/s/AKfycbzzrJ8uAZkeijO1HlCQrS6QVa5bQmLHcTvlAwrnqLd5rwXDMg2LNfCnRvOH5bcfgh_rjQ/exec');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
