@@ -2,13 +2,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #fff;
     margin-bottom: 200px;
 }
 
 .container {
     margin: 0 auto;
-    width: 420px;
+    width: 100%;
 }
 
 .header {
@@ -163,15 +163,16 @@ body {
 
 .pr-product {
     display: flex;
-    font-size: 16px;
+    font-size: 15px;
     height: 16px;
     line-height: 22px;
     margin-bottom: 10px;
+    padding: 0 10px;
 }
 
 .pr-product-ratting {
     display: flex;
-    padding-right: 8px;
+    padding-right: 6px;
     border-right: 1px solid rgb(143, 142, 142);
 }
 
@@ -192,7 +193,7 @@ body {
 }
 
 .pr-product-sold {
-    padding: 0 8px;
+    padding: 0 6px;
     border-right: 1px solid rgb(143, 142, 142);
     color: rgb(143, 142, 142);
 }
@@ -220,7 +221,6 @@ body {
 }
 
 .info {
-    width: 100%;
     padding: 0 10px;
 }
 
@@ -474,11 +474,10 @@ body {
 }
 
 .product {
-
+    padding: 0 10px;
 }
 
 .product-header {
-
 }
 
 .product-header-title {
@@ -500,7 +499,6 @@ body {
 }
 
 .product-content {
-
 }
 
 .product-content-title {
@@ -525,4 +523,105 @@ body {
     margin-bottom: 5px;
 }
 
+.order {
+    background-color: rgb(248, 248, 248);
+    padding: 20px 10px;
+}
+
+.order-intro {
+    color: rgb(1, 1, 1);
+    line-height: 2;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.order-intro-title {
+    font-family: Tinos, serif;
+    font-size: 20px;
+}
+
+.order-intro-txt1 {
+    font-style: italic;
+    color: rgb(146, 143, 143);
+    font-weight: 400;
+}
+
+.order-intro-txt2 {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.order-intro-txt2 span {
+    margin-left: 3px;
+    text-decoration-line: line-through;
+}
+
+.order-intro-txt3 {
+    font-weight: bold;
+}
+
+.order-intro-txt3 span {
+    margin-left: 5px;
+    font-size: 21px;
+    color: red;
+}
+
+.order-intro-txt4 {
+    font-size: 15px;
+}
+
+.order-form {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(1, 1, 1, 0.2) 0px 0px 20px -10px;
+    border-radius: 7px;
+    padding: 20px 10px;
+}
+
+.order-form-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-form-content input, .order-form-content textarea {
+    background-color: rgb(248, 248, 248);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(183, 183, 183);
+    padding: 12px 10px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    &::placeholder {
+        color: black;
+    }
+}
+
+.order-form-content textarea {
+    padding: 6px 10px;
+}
+
+.order-form-radio {
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(183, 183, 183);
+    padding: 12px 10px;
+    background-color: rgb(248, 248, 248);
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+}
+
+.order-form-content button {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 2;
+    color: rgb(241, 243, 244);
+    text-align: center;
+    background-color: rgb(255, 9, 88);
+    border: unset;
+    padding: 15px 0;
+    cursor: pointer;
+}
 
