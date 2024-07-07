@@ -36,13 +36,13 @@ function stopAutoplay() {
 document.addEventListener('DOMContentLoaded', startAutoplay);
 
 // Stop autoplay when user interacts with the controls
-document.querySelector('.carousel-control.prev').addEventListener('click', function() {
+document.querySelector('.carousel-control.prev').addEventListener('click', function () {
     stopAutoplay();
     prevSlide();
     startAutoplay(); // Restart autoplay after interaction
 });
 
-document.querySelector('.carousel-control.next').addEventListener('click', function() {
+document.querySelector('.carousel-control.next').addEventListener('click', function () {
     stopAutoplay();
     nextSlide();
     startAutoplay(); // Restart autoplay after interaction
@@ -103,3 +103,12 @@ function startCountdown() {
 }
 
 startCountdown();
+
+
+function scrollToForm() {
+    const header = document.getElementById('orderForm');
+    header.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(function() {
+        document.getElementById('name').focus();
+    }, 1000); // Adjust the timeout value as needed
+}

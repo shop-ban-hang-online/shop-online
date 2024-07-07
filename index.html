@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cân điện tử thông minh</title>
     <link rel="stylesheet" href="css/common.css">
+    <link rel="icon" type="image/x-icon" href="/img/slider/1.png">
 </head>
 
 <body>
@@ -54,8 +55,8 @@
                 <div class="flash-sale">
                     <div class="flash-sale-icon"></div>
                     <div class="flash-sale-price">
-                        <div class="flash-sale-price-new">269.000đ - 1 CHIẾC</div>
-                        <div class="flash-sale-price-old">Giá cũ<span>500.000đ</span></div>
+                        <div class="flash-sale-price-new">149.000đ - 1 CHIẾC</div>
+                        <div class="flash-sale-price-old">Giá cũ<span>300.000đ</span></div>
                     </div>
                     <div class="flash-sale-count" id="countdown">
                     </div>
@@ -83,7 +84,7 @@
                         </g>
                     </svg>
                 </div>
-                <div class="pr-product-ratting-txt">4.9/5<span>(9.2k)</span></div>
+                <div class="pr-product-ratting-txt">4.9/5</div>
             </div>
             <div class="pr-product-sold">Đã bán<span>38.9k</span></div>
             <div class="pr-product-ship">
@@ -119,11 +120,11 @@
             <div class="info-ship">
                 <div class="info-ship-header">
                     <div class="info-ship-header-title">Vận chuyển</div>
-                    <div class="info-ship-header-price">57.200đ</div>
+                    <div class="info-ship-header-price">10.00đ</div>
                 </div>
                 <div class="info-ship-des">
-                    Giảm 27.200đ phí vận chuyển đối với các đơn hàng trị giá 150.000đ trở lên. Miễn phí vận chuyển đồi
-                    với các đơn hàng trị giá 350.000đ trở lên<br>
+                    Giảm 20.000đ phí vận chuyển đối với các đơn hàng trị giá 100.000đ trở lên. Miễn phí vận chuyển đồi
+                    với các đơn hàng trị giá 250.000đ trở lên<br>
                     Ngày giao hàng dự kiến: Từ 1 đến 3 ngày
                 </div>
             </div>
@@ -132,7 +133,7 @@
                 <div class="info-guarantee-des">Trả hàng trong vòng 7 ngày - Hủy đơn dễ dàng - Hoàn hàng miễn phí</div>
             </div>
             <div class="buy-now">
-                <div class="buy-now-btn">Mua ngay</div>
+                <div class="buy-now-btn" onclick="scrollToForm()">Mua ngay</div>
             </div>
         </div>
         <div class="line"></div>
@@ -578,32 +579,88 @@
             <div class="order-intro">
                 <div class="order-intro-title">CÂN ĐIỆN TỬ THÔNG MINH</div>
                 <div class="order-intro-txt1">HIỆN ĐẠI - TIỆN DỤNG - GIÁ TỐT</div>
-                <div class="order-intro-txt2">Giá gốc:<span>500.000đ</span></div>
-                <div class="order-intro-txt3">Giảm còn:<span>269.000đ - 1 chiếc</span></div>
-                <div class="order-intro-txt4">MIỄN PHÍ VẬN CHUYỂN VỚI ĐƠN HÀNG TRÊN 350K</div>
+                <div class="order-intro-txt2">Giá gốc:<span>300.000đ</span></div>
+                <div class="order-intro-txt3">Giảm còn:<span>149.000đ - 1 chiếc</span></div>
+                <div class="order-intro-txt4">MIỄN PHÍ VẬN CHUYỂN VỚI ĐƠN HÀNG TRÊN 250K</div>
             </div>
             <div class="order-form">
                 <form id="orderForm" class="order-form-content">
-                    <input type="text" id="name" name="name" placeholder="Họ và Tên">
-                    <input type="tel" id="phone" name="phone" placeholder="Số điện thoại" required
-                        pattern="(\+84|0)(9|8|7|5|3)[0-9]{8}" title="Số điện thoại phải có 10 chữ số">
-                    <input type="text" id="address" name="address" placeholder="Địa chỉ">
+                    <input type="text" id="name" name="Name" placeholder="Họ và Tên">
+                    <input type="tel" id="phone" name="Phone" placeholder="Số điện thoại">
+                    <div class="error" id="phoneError">Số điện thoại phải có 10 chữ số.</div>
+                    <input type="text" id="address" name="Address" placeholder="Địa chỉ">
                     <div class="order-form-radio">
                         <label>
-                            <input type="radio" name="option" value="1" checked>Mua 01 cân điện tử: 269.000Đ + 30K Ship
+                            <input type="radio" name="Option" value="Mua 01 cân điện tử" checked>Mua 01 cân điện tử:
+                            149.000Đ + 30K Ship
                         </label>
                         <label>
-                            <input type="radio" name="option" value="2">Mua 02 cân điện tử: 499.000Đ + Miễn Phí Ship
+                            <input type="radio" name="Option" value="Mua 02 cân điện tử">Mua 02 cân điện tử: 298.000Đ +
+                            Miễn Phí Ship
                             (Tặng kèm 01 dây nhảy lõi thép)
                         </label>
                     </div>
-                    <textarea id="message" name="message" rows="4"
+                    <textarea id="message" name="Message" rows="4"
                         placeholder="Để lại lời nhắn cho chúng tôi"></textarea>
+                    <input type="hidden" id="Timestamp" name="Timestamp">
                     <button type="submit">XÁC NHẬN ĐẶT HÀNG</button>
                 </form>
             </div>
         </div>
+        <div class="footer">
+            <div class="footer-info">
+                <div class="footer-info-item">
+                    <div class="footer-info-item-icon"><img src="/img/House.svg" alt=""></div>
+                    <div class="footer-info-item-txt">Văn Phòng: Số 9 chợ gỗ Đồng Kị - Từ Sơn - Bắc Ninh</div>
+                </div>
+                <div class="footer-info-item">
+                    <div class="footer-info-item-icon"><img src="/img/Phone.svg" alt=""></div>
+                    <div class="footer-info-item-txt footer-info-item-phone">Phone: 034 749 1896</div>
+                </div>
+            </div>
+            <div class="line footer-line"></div>
+            <div class="footer-policy">
+                <div class="footer-policy-item">Chính sách bảo mật</div>
+                <div class="footer-policy-item">Chính sách thanh toán</div>
+                <div class="footer-policy-item">Chính sách bảo hành</div>
+                <div class="footer-policy-item">Chính sách đổi trả</div>
+            </div>
+            <div class="footer-social">
+                <img src="/img/FB.svg" alt="">
+                <img src="/img/Mail.svg" alt="">
+                <img src="/img/Earth.svg" alt="">
+            </div>
+            <div class="footer-cpr">©2022 Allrights reserved.</div>
+        </div>
+        <div class="menu-footer">
+            <div class="menu-addtocard" onclick="scrollToForm()">Thêm vào giỏ hàng</div>
+            <div class="menu-buynow" onclick="scrollToForm()">Mua ngay</div>
+        </div>
+        <!-- Popup for success message -->
+        <div class="overlay" id="overlay"></div>
+        <div class="popup" id="successPopup">
+            <h3>Đặt hàng</h3>
+            <div class="animation">
+                <h2>THÀNH CÔNG!</h2>
+            </div>
+            <img src="/img/icon.gif" alt="">
+            <div class="popup-txt">
+                <p>Cảm ơn bạn đã mua hàng của chúng tôi.</p>
+                <p>Nhân viên tư vấn sẽ gọi điện tới số điện thoại bạn cung cấp để xác nhận trong ít phút nữa nhé!</p>
+            </div>
+            <p class="popup-end">CHÚC BẠN MỘT NGÀY TỐT LÀNH!</p>
+            <button onclick="closePopup()">x</button>
+        </div>
     </div>
+
+
+
+
+    <!-- Loading overlay -->
+    <div class="loading" id="loading">
+        <img src="/img/Spin.gif" alt="Loading...">
+    </div>
+
     <script src="/js/appscript.js"></script>
     <script src="/js/common.js"></script>
 </body>
