@@ -106,9 +106,24 @@ startCountdown();
 
 
 function scrollToForm() {
-    const header = document.getElementById('orderForm');
+    const header = document.getElementById('orderWrapper');
     header.scrollIntoView({ behavior: 'smooth' });
     setTimeout(function() {
         document.getElementById('name').focus();
     }, 1000); // Adjust the timeout value as needed
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var phoneInput = document.getElementById('phone');
+    var phoneError = document.getElementById('phoneError');
+
+    phoneInput.addEventListener('input', function() {
+        var phonePattern = /^(\+\d{1,3}\s?)?((\(\d{1,4}\))|\d{1,4})[\s.-]?\d{1,4}[\s.-]?\d{1,4}[\s.-]?\d{1,4}$/;
+        if (phonePattern.test(phoneInput.value)) {
+            phoneError.style.display = 'none'; // Ẩn thông báo lỗi khi số điện thoại hợp lệ
+        } else {
+            phoneError.style.display = 'block';
+        }
+    });
+});
+

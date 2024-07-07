@@ -2,6 +2,7 @@ document.getElementById('orderForm').onsubmit = function(e) {
     e.preventDefault();
     if (!validatePhone()) {
         phoneError.style.display = 'block';
+        document.getElementById('phone').focus();
         return;
     } else {
         phoneError.style.display = 'none';
@@ -37,7 +38,7 @@ document.getElementById('orderForm').onsubmit = function(e) {
 
 function validatePhone() {
     var phone = document.getElementById('phone').value;
-    var phoneRegex = /^[0-9]{10}$/;  // Adjust this regex according to your phone number format requirements
+    var phoneRegex = /^(\+\d{1,3}\s?)?((\(\d{1,4}\))|\d{1,4})[\s.-]?\d{1,4}[\s.-]?\d{1,4}[\s.-]?\d{1,4}$/;  // Adjust this regex according to your phone number format requirements
     return phoneRegex.test(phone);
 }
 
@@ -57,6 +58,7 @@ function showPopup() {
 function closePopup() {
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('successPopup').style.display = 'none';
+    window.scrollTo(0, 0);
     location.reload();
 }
 
