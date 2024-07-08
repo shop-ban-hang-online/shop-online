@@ -382,6 +382,7 @@ body {
     display: flex;
     height: 17px;
     margin-top: 8px;
+    align-items: center;
 }
 
 .rate-star-txt {
@@ -390,7 +391,8 @@ body {
 
 .rate-star-icon {
     display: flex;
-    margin-left: 5px;
+    margin: 0 0 5px 5px;
+    width: 25%;
 }
 
 .rate-comment {
