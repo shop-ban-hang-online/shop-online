@@ -27,7 +27,7 @@ document.getElementById('orderForm').onsubmit = function(e) {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             hideLoading();
                 if (xhr.status == 200) {
-                    window.location.href = 'camon.html';
+                    window.location.href = '/camon/';
                 } else {
                     alert('Đã xảy ra lỗi. Vui lòng thử lại.');
                 }
