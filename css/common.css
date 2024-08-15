@@ -767,16 +767,16 @@ input[type="radio"] {
 /* Popup styles */
 .popup {
     /* display: none; */
-    position: fixed;
-    left: 50%;
+    /* position: fixed; */
+    /* left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
     background-color: white;
-    padding: 20px;
+    /* padding: 20px; */
     /* border: 1px solid #ccc; */
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    z-index: 1000;
-    width: 420px;
+    /* z-index: 1000; */
+    /* width: 420px; */
     text-align: center;
 }
 
@@ -826,7 +826,8 @@ input[type="radio"] {
 }
 
 .popup-image {
-    width: 50%;
+    width: 70%;
+    margin-top: 15px;
 }
 
 .popup button {
