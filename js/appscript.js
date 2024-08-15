@@ -27,7 +27,7 @@ document.getElementById('orderForm').onsubmit = function(e) {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             hideLoading();
                 if (xhr.status == 200) {
-                    showPopup();
+                    window.location.href = 'camon.html';
                 } else {
                     alert('Đã xảy ra lỗi. Vui lòng thử lại.');
                 }
@@ -50,15 +50,15 @@ function hideLoading() {
     document.getElementById('loading').style.display = 'none';
 }
 
-function showPopup() {
-    document.getElementById('overlay').style.display = 'block';
-    document.getElementById('successPopup').style.display = 'block';
-}
+// function showPopup() {
+//     document.getElementById('overlay').style.display = 'block';
+//     document.getElementById('successPopup').style.display = 'block';
+// }
 
-function closePopup() {
-    document.getElementById('overlay').style.display = 'none';
-    document.getElementById('successPopup').style.display = 'none';
-    window.scrollTo(0, 0);
-    location.reload();
-}
+// function closePopup() {
+//     document.getElementById('overlay').style.display = 'none';
+//     document.getElementById('successPopup').style.display = 'none';
+//     window.scrollTo(0, 0);
+//     location.reload();
+// }
 
