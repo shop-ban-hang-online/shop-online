@@ -13,11 +13,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Insert secrets into HTML
-      run: |
-        PIXEL_ID=${{ secrets.FB_PIXEL_ID }}
-        sed -i "s/PLACEHOLDER_PIXEL_ID/${PIXEL_ID}/g" index.html
-
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
